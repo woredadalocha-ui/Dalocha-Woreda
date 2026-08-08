@@ -175,7 +175,119 @@ ul {
 .btn-outline:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
+/* ==========================================================================
+   HERO VIDEO SECTION
+   ========================================================================== */
+.hero-video-container {
+  position: relative;
+  width: 100%;
+  height: 80vh; /* Takes up 80% of the screen height */
+  min-height: 450px;
+  overflow: hidden;
+  background-color: #0d2744;
+}
 
+/* Responsive Background Video */
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures video fills container without stretching */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+/* Dark Gradient Overlay for Readability */
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(13, 39, 68, 0.65), 
+    rgba(23, 82, 141, 0.75)
+  );
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+}
+
+/* Overlay Text & Typography */
+.video-overlay-content {
+  color: #ffffff;
+  max-width: 900px;
+}
+
+.video-overlay-content h1 {
+  font-size: 38px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  line-height: 1.3;
+}
+
+.video-overlay-content p {
+  font-size: 18px;
+  margin-bottom: 25px;
+  opacity: 0.95;
+  font-weight: 300;
+}
+
+/* Action Buttons inside Hero */
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-hero-primary {
+  background-color: #17528d;
+  color: #ffffff;
+  padding: 12px 26px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 15px;
+  border: 2px solid #17528d;
+}
+
+.btn-hero-primary:hover {
+  background-color: #123e6b;
+  border-color: #123e6b;
+}
+
+.btn-hero-secondary {
+  background-color: transparent;
+  color: #ffffff;
+  padding: 12px 26px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 15px;
+  border: 2px solid #ffffff;
+}
+
+.btn-hero-secondary:hover {
+  background-color: #ffffff;
+  color: #17528d;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .hero-video-container {
+    height: 60vh;
+  }
+  .video-overlay-content h1 {
+    font-size: 26px;
+  }
+  .video-overlay-content p {
+    font-size: 14px;
+  }
+}
 /* ==========================================================================
    4. MISSION, VISION & VALUES CARDS
    ========================================================================== */
