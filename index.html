@@ -598,8 +598,8 @@
   </header>
 <!-- HERO VIDEO SECTION -->
   <section class="hero-video-container">
-    <!-- Video Element -->
-    <video autoplay loop muted playsinline class="hero-video">
+    <!-- Added id="heroVideo" -->
+    <video id="heroVideo" autoplay loop muted playsinline class="hero-video">
       <source src="እንኳን_ወደ_ዳሎቻ_ወረዳ_አስተዳደር_በደህና_መጡ.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
@@ -614,6 +614,11 @@
           <a href="#about" class="btn-hero-secondary">ስለ ወረዳው (About Us)</a>
         </div>
       </div>
+
+      <!-- Sound Toggle Button -->
+      <button id="soundToggle" class="btn-sound-toggle" onclick="toggleSound()">
+        <i id="soundIcon" class="fa-solid fa-volume-xmark"></i> <span id="soundText">ድምፅ ክፈት (Unmute)</span>
+      </button>
     </div>
   </section>
   <!-- 3. MISSION, VISION & VALUES CARDS -->
