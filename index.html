@@ -809,6 +809,22 @@
       <a href="#"><i class="fa-brands fa-telegram"></i></a>
     </div>
   </div>
+<script>
+  function toggleSound() {
+    var video = document.getElementById("heroVideo");
+    var icon = document.getElementById("soundIcon");
+    var text = document.getElementById("soundText");
 
+    if (video.muted) {
+      video.muted = false;
+      icon.className = "fa-solid fa-volume-high";
+      text.innerText = "ድምፅ ዝጋ (Mute)";
+    } else {
+      video.muted = true;
+      icon.className = "fa-solid fa-volume-xmark";
+      text.innerText = "ድምፅ ክፈት (Unmute)";
+    }
+  }
+</script>
 </body>
 </html>
