@@ -288,6 +288,29 @@ ul {
     font-size: 14px;
   }
 }
+/* Sound Toggle Button */
+.btn-sound-toggle {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 10px 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 3;
+  transition: background-color 0.3s;
+}
+
+.btn-sound-toggle:hover {
+  background-color: #17528d;
+  border-color: #17528d;
+}
 /* ==========================================================================
    4. MISSION, VISION & VALUES CARDS
    ========================================================================== */
