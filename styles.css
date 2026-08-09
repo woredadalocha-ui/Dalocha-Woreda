@@ -181,7 +181,7 @@ ul {
 .hero-video-container {
   position: relative;
   width: 100%;
-  height: 80vh; /* Takes up 80% of the screen height */
+  height: 80vh;
   min-height: 450px;
   overflow: hidden;
   background-color: #0d2744;
@@ -191,7 +191,7 @@ ul {
 .hero-video {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensures video fills container without stretching */
+  object-fit: cover; /* Keeps video proportional without stretching */
   position: absolute;
   top: 0;
   left: 0;
@@ -254,6 +254,7 @@ ul {
   font-weight: bold;
   font-size: 15px;
   border: 2px solid #17528d;
+  cursor: pointer;
 }
 
 .btn-hero-primary:hover {
@@ -269,6 +270,7 @@ ul {
   font-weight: bold;
   font-size: 15px;
   border: 2px solid #ffffff;
+  cursor: pointer;
 }
 
 .btn-hero-secondary:hover {
@@ -276,19 +278,7 @@ ul {
   color: #17528d;
 }
 
-/* Mobile Adjustments */
-@media (max-width: 768px) {
-  .hero-video-container {
-    height: 60vh;
-  }
-  .video-overlay-content h1 {
-    font-size: 26px;
-  }
-  .video-overlay-content p {
-    font-size: 14px;
-  }
-}
-/* Sound Toggle Button */
+/* Sound Toggle Button (Desktop Base) */
 .btn-sound-toggle {
   position: absolute;
   bottom: 25px;
@@ -310,6 +300,41 @@ ul {
 .btn-sound-toggle:hover {
   background-color: #17528d;
   border-color: #17528d;
+}
+
+/* ==========================================================================
+   MOBILE ADJUSTMENTS (Phones & Tablets)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .hero-video-container {
+    height: 55vh;        /* Proportional viewport height on mobile */
+    min-height: 320px;   /* Prevents the container from squishing too much on small devices */
+  }
+
+  .video-overlay-content h1 {
+    font-size: 22px;     /* Fits title cleanly on mobile screens without overflow */
+    margin-bottom: 8px;
+  }
+
+  .video-overlay-content p {
+    font-size: 13px;
+    margin-bottom: 18px;
+  }
+
+  /* Make Hero Buttons fit side-by-side or stack neatly */
+  .hero-buttons .btn-hero-primary,
+  .hero-buttons .btn-hero-secondary {
+    padding: 10px 18px;
+    font-size: 13px;
+  }
+
+  /* Position sound button neatly in the lower corner */
+  .btn-sound-toggle {
+    bottom: 12px;
+    right: 12px;
+    padding: 6px 12px;
+    font-size: 11px;
+  }
 }
 /* ==========================================================================
    4. MISSION, VISION & VALUES CARDS
