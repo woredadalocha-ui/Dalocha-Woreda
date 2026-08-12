@@ -769,3 +769,27 @@ ul {
     max-width: 90%;
   }
 }
+.service-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  color: inherit;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.service-link small {
+  display: block;
+  font-size: 11px;
+  margin-top: 4px;
+  opacity: 0.75;
+}
+
+.service-link:hover {
+  color: #17528d;
+}
+
+.services-right .service-link:hover {
+  color: #fff;
+}
