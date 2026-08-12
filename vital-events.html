@@ -1,0 +1,1541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    Dalocha Woreda Vital Event Certificate Service |
+    የዳሎቻ ወረዳ የወሳኝ ኩነት ምስክር ወረቀት አገልግሎት
+  </title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, "Noto Sans Ethiopic", "Abyssinica SIL", sans-serif;
+      background: #f1f5f9;
+      color: #1e293b;
+    }
+
+    /* HEADER */
+
+    header {
+      background: #123c69;
+      color: white;
+      padding: 25px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 30px;
+    }
+
+    header p {
+      margin: 10px 0 0;
+      font-size: 18px;
+    }
+
+    .am {
+      display: block;
+      margin-top: 6px;
+    }
+
+    /* NAVIGATION */
+
+    nav {
+      background: #0b2f50;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 5px;
+      padding: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 5px;
+      transition: 0.2s;
+    }
+
+    nav a:hover {
+      background: #1d5d91;
+    }
+
+    /* CONTAINER */
+
+    .container {
+      width: 94%;
+      max-width: 1150px;
+      margin: 30px auto;
+    }
+
+    /* BACK BUTTON */
+
+    .back-home {
+      display: inline-block;
+      background: #123c69;
+      color: white;
+      padding: 11px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      margin-bottom: 20px;
+    }
+
+    .back-home:hover {
+      background: #0b2f50;
+    }
+
+    /* WELCOME */
+
+    .welcome {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      margin-bottom: 25px;
+    }
+
+    .welcome h2 {
+      color: #123c69;
+      margin-top: 0;
+    }
+
+    /* CARDS */
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 18px;
+      margin: 25px 0;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      border-top: 5px solid #123c69;
+    }
+
+    .card h3 {
+      color: #123c69;
+      margin-bottom: 10px;
+    }
+
+    .card-icon {
+      font-size: 35px;
+      color: #123c69;
+      margin-bottom: 10px;
+    }
+
+    /* SECTIONS */
+
+    .section {
+      background: white;
+      padding: 28px;
+      margin: 25px 0;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+
+    .section h2 {
+      color: #123c69;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 12px;
+    }
+
+    /* WORKFLOW */
+
+    .workflow {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .workflow-step {
+      background: #f8fafc;
+      border-left: 5px solid #123c69;
+      padding: 20px;
+      border-radius: 6px;
+    }
+
+    .workflow-step strong {
+      color: #123c69;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    /* FORMS */
+
+    label {
+      display: block;
+      margin-top: 17px;
+      font-weight: bold;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 7px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 15px;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #123c69;
+      box-shadow: 0 0 0 2px rgba(18,60,105,0.1);
+    }
+
+    /* BUTTONS */
+
+    button {
+      border: none;
+      padding: 12px 22px;
+      border-radius: 6px;
+      color: white;
+      font-size: 15px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .btn-primary {
+      background: #123c69;
+    }
+
+    .btn-primary:hover {
+      background: #0b2f50;
+    }
+
+    .btn-success {
+      background: #198754;
+    }
+
+    .btn-success:hover {
+      background: #146c43;
+    }
+
+    .btn-danger {
+      background: #dc3545;
+      margin-left: 8px;
+    }
+
+    .btn-danger:hover {
+      background: #bb2d3b;
+    }
+
+    /* STATUS */
+
+    .status {
+      display: inline-block;
+      padding: 7px 13px;
+      border-radius: 20px;
+      background: #fff3cd;
+      color: #856404;
+      font-weight: bold;
+    }
+
+    .status.approved {
+      background: #d1e7dd;
+      color: #0f5132;
+    }
+
+    .status.rejected {
+      background: #f8d7da;
+      color: #842029;
+    }
+
+    /* RESULT */
+
+    .result {
+      display: none;
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 7px;
+      background: #d1e7dd;
+      color: #0f5132;
+      border-left: 5px solid #198754;
+    }
+
+    /* TABLE */
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th,
+    td {
+      border: 1px solid #e2e8f0;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background: #123c69;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background: #f8fafc;
+    }
+
+    /* CERTIFICATE */
+
+    #certificate {
+      display: none;
+    }
+
+    .certificate {
+      border: 8px double #123c69;
+      padding: 35px;
+      text-align: center;
+      background: white;
+    }
+
+    .certificate h1 {
+      color: #123c69;
+      margin-bottom: 5px;
+    }
+
+    .certificate h2 {
+      color: #333;
+    }
+
+    .certificate-number {
+      font-size: 20px;
+      font-weight: bold;
+      color: #123c69;
+      margin: 20px;
+    }
+
+    .certificate-info {
+      text-align: left;
+      max-width: 650px;
+      margin: 25px auto;
+      line-height: 2;
+    }
+
+    .print-button {
+      background: #123c69;
+      margin-bottom: 25px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #0b2f50;
+      color: white;
+      text-align: center;
+      padding: 30px;
+      margin-top: 40px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 650px) {
+
+      header h1 {
+        font-size: 23px;
+      }
+
+      header p {
+        font-size: 15px;
+      }
+
+      .container {
+        width: 92%;
+      }
+
+      table {
+        font-size: 12px;
+      }
+
+      th,
+      td {
+        padding: 8px;
+      }
+
+      .btn-danger {
+        margin-left: 0;
+      }
+
+    }
+
+    /* PRINT */
+
+    @media print {
+
+      body * {
+        visibility: hidden;
+      }
+
+      #certificate,
+      #certificate * {
+        visibility: visible;
+      }
+
+      #certificate {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+      }
+
+      .print-button {
+        display: none;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+  <h1>
+    Dalocha Woreda
+    <span class="am">ዳሎቻ ወረዳ</span>
+  </h1>
+
+  <p>
+    Vital Event Certificate Service
+    <span class="am">
+      የወሳኝ ኩነት ምስክር ወረቀት አገልግሎት
+    </span>
+  </p>
+
+</header>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+  <a href="index.html">
+    Home / መነሻ
+  </a>
+
+  <a href="#request">
+    Request Certificate / ጥያቄ አቅርብ
+  </a>
+
+  <a href="#status">
+    Check Status / ሁኔታ ይመልከቱ
+  </a>
+
+  <a href="#approval">
+    Officer Approval / የባለሙያ ማጽደቂያ
+  </a>
+
+</nav>
+
+
+<div class="container">
+
+  <a href="index.html" class="back-home">
+    ← Back to Dalocha Woreda / ወደ ዳሎቻ ወረዳ ተመለስ
+  </a>
+
+
+  <!-- WELCOME -->
+
+  <section class="welcome">
+
+    <h2>
+      Vital Event Certificate Service
+      <span class="am">
+        የወሳኝ ኩነት ምስክር ወረቀት አገልግሎት
+      </span>
+    </h2>
+
+    <p>
+      Citizens can request birth, marriage, divorce and death
+      certificates through this service.
+    </p>
+
+    <p class="am">
+      ዜጎች የልደት፣ የጋብቻ፣ የፍቺ እና የሞት ምስክር
+      ወረቀቶችን በዚህ አገልግሎት መጠየቅ ይችላሉ።
+    </p>
+
+  </section>
+
+
+  <!-- CERTIFICATE TYPES -->
+
+  <section class="section">
+
+    <h2>
+      Available Certificates
+      <span class="am">የሚገኙ የምስክር ወረቀቶች</span>
+    </h2>
+
+    <div class="cards">
+
+      <div class="card">
+
+        <div class="card-icon">👶</div>
+
+        <h3>
+          Birth Certificate
+        </h3>
+
+        <span class="am">
+          የልደት ምስክር ወረቀት
+        </span>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">💍</div>
+
+        <h3>
+          Marriage Certificate
+        </h3>
+
+        <span class="am">
+          የጋብቻ ምስክር ወረቀት
+        </span>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">📄</div>
+
+        <h3>
+          Divorce Certificate
+        </h3>
+
+        <span class="am">
+          የፍቺ ምስክር ወረቀት
+        </span>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">🕊️</div>
+
+        <h3>
+          Death Certificate
+        </h3>
+
+        <span class="am">
+          የሞት ምስክር ወረቀት
+        </span>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- WORKFLOW -->
+
+  <section class="section">
+
+    <h2>
+      Request and Approval Process
+      <span class="am">
+        የጥያቄና የማጽደቂያ ሂደት
+      </span>
+    </h2>
+
+    <div class="workflow">
+
+      <div class="workflow-step">
+
+        <strong>
+          1. Applicant
+          <span class="am">1. አመልካች</span>
+        </strong>
+
+        <p>
+          Applicant submits a certificate request.
+        </p>
+
+        <p class="am">
+          አመልካቹ የምስክር ወረቀት ጥያቄ ያቀርባል።
+        </p>
+
+      </div>
+
+
+      <div class="workflow-step">
+
+        <strong>
+          2. Review
+          <span class="am">2. ግምገማ</span>
+        </strong>
+
+        <p>
+          Authorized officer checks the application.
+        </p>
+
+        <p class="am">
+          ሥልጣን ያለው ባለሙያ ጥያቄውን ይመረምራል።
+        </p>
+
+      </div>
+
+
+      <div class="workflow-step">
+
+        <strong>
+          3. Decision
+          <span class="am">3. ውሳኔ</span>
+        </strong>
+
+        <p>
+          Officer approves or rejects the request.
+        </p>
+
+        <p class="am">
+          ባለሙያው ጥያቄውን ያጸድቃል ወይም ውድቅ ያደርጋል።
+        </p>
+
+      </div>
+
+
+      <div class="workflow-step">
+
+        <strong>
+          4. Certificate
+          <span class="am">4. ምስክር ወረቀት</span>
+        </strong>
+
+        <p>
+          Approved certificate becomes available.
+        </p>
+
+        <p class="am">
+          የጸደቀው ምስክር ወረቀት ይዘጋጃል።
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- REQUEST -->
+
+  <section id="request" class="section">
+
+    <h2>
+      Request a Vital Event Certificate
+      <span class="am">
+        የወሳኝ ኩነት ምስክር ወረቀት ይጠይቁ
+      </span>
+    </h2>
+
+
+    <form id="requestForm">
+
+      <label>
+        Certificate Type
+        <span class="am">
+          የምስክር ወረቀት ዓይነት
+        </span>
+      </label>
+
+      <select id="certificateType" required>
+
+        <option value="">
+          Select / ይምረጡ
+        </option>
+
+        <option value="Birth Certificate">
+          Birth Certificate / የልደት ምስክር ወረቀት
+        </option>
+
+        <option value="Marriage Certificate">
+          Marriage Certificate / የጋብቻ ምስክር ወረቀት
+        </option>
+
+        <option value="Divorce Certificate">
+          Divorce Certificate / የፍቺ ምስክር ወረቀት
+        </option>
+
+        <option value="Death Certificate">
+          Death Certificate / የሞት ምስክር ወረቀት
+        </option>
+
+      </select>
+
+
+      <label>
+        Full Name
+        <span class="am">
+          ሙሉ ስም
+        </span>
+      </label>
+
+      <input
+        type="text"
+        id="fullName"
+        placeholder="Enter full name / ሙሉ ስም ያስገቡ"
+        required
+      >
+
+
+      <label>
+        Phone Number
+        <span class="am">
+          ስልክ ቁጥር
+        </span>
+      </label>
+
+      <input
+        type="tel"
+        id="phone"
+        placeholder="Enter phone number / ስልክ ቁጥር ያስገቡ"
+        required
+      >
+
+
+      <label>
+        Identification Number
+        <span class="am">
+          የመታወቂያ ቁጥር
+        </span>
+      </label>
+
+      <input
+        type="text"
+        id="idNumber"
+        placeholder="Enter ID number / የመታወቂያ ቁጥር ያስገቡ"
+        required
+      >
+
+
+      <label>
+        Purpose of Request
+        <span class="am">
+          የጥያቄው ዓላማ
+        </span>
+      </label>
+
+      <textarea
+        id="reason"
+        placeholder="Enter purpose / የጥያቄውን ዓላማ ያስገቡ"
+        required
+      ></textarea>
+
+
+      <label>
+        Supporting Document
+        <span class="am">
+          የሚደግፍ ሰነድ
+        </span>
+      </label>
+
+      <input type="file" id="document">
+
+
+      <button type="submit" class="btn-primary">
+        Submit Request / ጥያቄ አቅርብ
+      </button>
+
+    </form>
+
+
+    <div id="requestResult" class="result">
+
+      <strong>
+        Request Submitted Successfully!
+      </strong>
+
+      <span class="am">
+        ጥያቄዎ በተሳካ ሁኔታ ተመዝግቧል!
+      </span>
+
+      <br><br>
+
+      Your Request Number:
+      <strong id="generatedNumber"></strong>
+
+      <span class="am">
+        የጥያቄዎ ቁጥር
+      </span>
+
+      <br><br>
+
+      Please keep this number to check your application status.
+
+      <span class="am">
+        የጥያቄዎን ሁኔታ ለመከታተል ይህን ቁጥር ይያዙ።
+      </span>
+
+    </div>
+
+  </section>
+
+
+  <!-- STATUS -->
+
+  <section id="status" class="section">
+
+    <h2>
+      Check Application Status
+      <span class="am">
+        የጥያቄውን ሁኔታ ይመልከቱ
+      </span>
+    </h2>
+
+
+    <label>
+      Request Number
+      <span class="am">
+        የጥያቄ ቁጥር
+      </span>
+    </label>
+
+    <input
+      type="text"
+      id="requestNumber"
+      placeholder="Example: DW-0001"
+    >
+
+
+    <button
+      class="btn-primary"
+      onclick="checkStatus()"
+    >
+      Check Status / ሁኔታ ይመልከቱ
+    </button>
+
+
+    <div id="statusResult" class="result"></div>
+
+  </section>
+
+
+  <!-- OFFICER APPROVAL -->
+
+  <section id="approval" class="section">
+
+    <h2>
+      Dalocha Woreda Officer Approval
+      <span class="am">
+        የዳሎቻ ወረዳ ባለሙያ ማጽደቂያ
+      </span>
+    </h2>
+
+
+    <p>
+      Only authorized Dalocha Woreda officers should approve or reject
+      applications.
+    </p>
+
+    <p class="am">
+      ጥያቄዎችን ማጽደቅ ወይም ውድቅ ማድረግ የሚችሉት
+      ሥልጣን ያላቸው የዳሎቻ ወረዳ ባለሙያዎች ብቻ ናቸው።
+    </p>
+
+
+    <table>
+
+      <thead>
+
+        <tr>
+
+          <th>
+            Request No.
+            <br>
+            የጥያቄ ቁጥር
+          </th>
+
+          <th>
+            Applicant
+            <br>
+            አመልካች
+          </th>
+
+          <th>
+            Certificate
+            <br>
+            ምስክር ወረቀት
+          </th>
+
+          <th>
+            Status
+            <br>
+            ሁኔታ
+          </th>
+
+          <th>
+            Action
+            <br>
+            ተግባር
+          </th>
+
+        </tr>
+
+      </thead>
+
+
+      <tbody id="approvalTable">
+
+      </tbody>
+
+    </table>
+
+  </section>
+
+
+  <!-- CERTIFICATE -->
+
+  <section id="certificate" class="section">
+
+    <div class="certificate">
+
+      <button
+        class="print-button"
+        onclick="window.print()"
+      >
+        Print Certificate / ምስክር ወረቀት አትም
+      </button>
+
+
+      <h1>
+        DALOCHA WOREDA
+      </h1>
+
+      <h2>
+        ዳሎቻ ወረዳ
+      </h2>
+
+
+      <h2>
+        Vital Event Certificate
+      </h2>
+
+      <h2>
+        የወሳኝ ኩነት ምስክር ወረቀት
+      </h2>
+
+
+      <div class="certificate-number">
+
+        Certificate No:
+        <span id="certificateNumber"></span>
+
+      </div>
+
+
+      <div class="certificate-info">
+
+        <p>
+          <strong>Applicant Name:</strong>
+          <span id="certificateName"></span>
+        </p>
+
+        <p>
+          <strong>Certificate Type:</strong>
+          <span id="certificateTypeResult"></span>
+        </p>
+
+        <p>
+          <strong>Identification Number:</strong>
+          <span id="certificateId"></span>
+        </p>
+
+        <p>
+          <strong>Phone:</strong>
+          <span id="certificatePhone"></span>
+        </p>
+
+        <p>
+          <strong>Issue Date:</strong>
+          <span id="certificateDate"></span>
+        </p>
+
+      </div>
+
+
+      <h3>
+        Authorized by Dalocha Woreda
+      </h3>
+
+      <p class="am">
+        በዳሎቻ ወረዳ የተፈቀደ
+      </p>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+  <strong>
+    Dalocha Woreda
+    <span class="am">
+      ዳሎቻ ወረዳ
+    </span>
+  </strong>
+
+  <p>
+    Vital Event Certificate Service
+  </p>
+
+  <p class="am">
+    የወሳኝ ኩነት ምስክር ወረቀት አገልግሎት
+  </p>
+
+  <p>
+    © 2026 Dalocha Woreda. All Rights Reserved.
+  </p>
+
+</footer>
+
+
+<script>
+
+  /*
+   * DEMO DATA STORAGE
+   *
+   * This version uses browser localStorage.
+   * For a real government system, replace this
+   * with a secure server/database.
+   */
+
+  let applications =
+    JSON.parse(localStorage.getItem("dalochaApplications")) || [];
+
+
+  /* GENERATE REQUEST NUMBER */
+
+  function generateRequestNumber() {
+
+    const number =
+      String(applications.length + 1).padStart(4, "0");
+
+    return "DW-" + number;
+  }
+
+
+  /* SUBMIT REQUEST */
+
+  document
+    .getElementById("requestForm")
+    .addEventListener("submit", function(event) {
+
+      event.preventDefault();
+
+
+      const certificateType =
+        document.getElementById("certificateType").value;
+
+      const fullName =
+        document.getElementById("fullName").value;
+
+      const phone =
+        document.getElementById("phone").value;
+
+      const idNumber =
+        document.getElementById("idNumber").value;
+
+      const reason =
+        document.getElementById("reason").value;
+
+
+      const requestNumber =
+        generateRequestNumber();
+
+
+      const application = {
+
+        requestNumber: requestNumber,
+
+        certificateType: certificateType,
+
+        fullName: fullName,
+
+        phone: phone,
+
+        idNumber: idNumber,
+
+        reason: reason,
+
+        status: "Pending",
+
+        submittedDate:
+          new Date().toLocaleDateString()
+
+      };
+
+
+      applications.push(application);
+
+
+      localStorage.setItem(
+        "dalochaApplications",
+        JSON.stringify(applications)
+      );
+
+
+      document
+        .getElementById("generatedNumber")
+        .textContent = requestNumber;
+
+
+      document
+        .getElementById("requestResult")
+        .style.display = "block";
+
+
+      document
+        .getElementById("requestForm")
+        .reset();
+
+
+      loadApprovalTable();
+
+
+      window.location.hash = "request";
+
+    });
+
+
+  /* LOAD APPLICATIONS */
+
+  function loadApprovalTable() {
+
+    const table =
+      document.getElementById("approvalTable");
+
+    table.innerHTML = "";
+
+
+    applications.forEach(function(app) {
+
+      const row =
+        document.createElement("tr");
+
+
+      let statusClass = "";
+
+      if (app.status === "Approved") {
+        statusClass = "approved";
+      }
+
+      if (app.status === "Rejected") {
+        statusClass = "rejected";
+      }
+
+
+      row.innerHTML = `
+
+        <td>
+          ${app.requestNumber}
+        </td>
+
+        <td>
+          ${app.fullName}
+        </td>
+
+        <td>
+          ${app.certificateType}
+        </td>
+
+        <td>
+          <span class="status ${statusClass}">
+            ${app.status}
+          </span>
+        </td>
+
+        <td>
+
+          ${
+            app.status === "Pending"
+
+            ?
+
+            `
+              <button
+                class="btn-success"
+                onclick="approveApplication('${app.requestNumber}')"
+              >
+                Approve
+                <br>
+                አጽድቅ
+              </button>
+
+              <button
+                class="btn-danger"
+                onclick="rejectApplication('${app.requestNumber}')"
+              >
+                Reject
+                <br>
+                ውድቅ አድርግ
+              </button>
+            `
+
+            :
+
+            app.status === "Approved"
+
+            ?
+
+            `
+              <button
+                class="btn-success"
+                onclick="viewCertificate('${app.requestNumber}')"
+              >
+                View Certificate
+                <br>
+                ምስክር ወረቀት ይመልከቱ
+              </button>
+            `
+
+            :
+
+            `
+              Rejected / ውድቅ ተደርጓል
+            `
+          }
+
+        </td>
+
+      `;
+
+
+      table.appendChild(row);
+
+    });
+
+  }
+
+
+  /* APPROVE */
+
+  function approveApplication(requestNumber) {
+
+    const app =
+      applications.find(
+        item => item.requestNumber === requestNumber
+      );
+
+
+    if (!app) return;
+
+
+    app.status = "Approved";
+
+
+    localStorage.setItem(
+      "dalochaApplications",
+      JSON.stringify(applications)
+    );
+
+
+    loadApprovalTable();
+
+
+    alert(
+      "Application approved successfully.\n" +
+      "ጥያቄው በተሳካ ሁኔታ ጸድቋል።"
+    );
+
+  }
+
+
+  /* REJECT */
+
+  function rejectApplication(requestNumber) {
+
+    const app =
+      applications.find(
+        item => item.requestNumber === requestNumber
+      );
+
+
+    if (!app) return;
+
+
+    const confirmation =
+      confirm(
+        "Are you sure you want to reject this application?\n" +
+        "ይህን ጥያቄ ውድቅ ማድረግ እርግጠኛ ነዎት?"
+      );
+
+
+    if (!confirmation) return;
+
+
+    app.status = "Rejected";
+
+
+    localStorage.setItem(
+      "dalochaApplications",
+      JSON.stringify(applications)
+    );
+
+
+    loadApprovalTable();
+
+
+    alert(
+      "Application rejected.\n" +
+      "ጥያቄው ውድቅ ተደርጓል።"
+    );
+
+  }
+
+
+  /* CHECK STATUS */
+
+  function checkStatus() {
+
+    const requestNumber =
+      document
+        .getElementById("requestNumber")
+        .value
+        .trim()
+        .toUpperCase();
+
+
+    const result =
+      document.getElementById("statusResult");
+
+
+    const app =
+      applications.find(
+        item =>
+          item.requestNumber === requestNumber
+      );
+
+
+    result.style.display = "block";
+
+
+    if (!app) {
+
+      result.style.background = "#f8d7da";
+
+      result.style.color = "#842029";
+
+      result.innerHTML = `
+
+        <strong>
+          Application Not Found
+        </strong>
+
+        <span class="am">
+          ጥያቄው አልተገኘም።
+        </span>
+
+      `;
+
+      return;
+
+    }
+
+
+    result.style.background = "#d1e7dd";
+
+    result.style.color = "#0f5132";
+
+
+    result.innerHTML = `
+
+      <strong>
+        Application:
+        ${app.requestNumber}
+      </strong>
+
+      <br><br>
+
+      Applicant:
+      ${app.fullName}
+
+      <br>
+
+      Certificate:
+      ${app.certificateType}
+
+      <br>
+
+      Status:
+      <strong>${app.status}</strong>
+
+      <br>
+
+      <span class="am">
+        ሁኔታ:
+        ${getAmharicStatus(app.status)}
+      </span>
+
+      ${
+        app.status === "Approved"
+
+        ?
+
+        `
+          <br><br>
+
+          <button
+            class="btn-success"
+            onclick="viewCertificate('${app.requestNumber}')"
+          >
+            View Certificate /
+            ምስክር ወረቀት ይመልከቱ
+          </button>
+        `
+
+        :
+
+        ""
+
+      }
+
+    `;
+
+  }
+
+
+  /* AMHARIC STATUS */
+
+  function getAmharicStatus(status) {
+
+    if (status === "Pending") {
+      return "በግምገማ ላይ";
+    }
+
+    if (status === "Approved") {
+      return "ጸድቋል";
+    }
+
+    if (status === "Rejected") {
+      return "ውድቅ ተደርጓል";
+    }
+
+    return status;
+
+  }
+
+
+  /* VIEW CERTIFICATE */
+
+  function viewCertificate(requestNumber) {
+
+    const app =
+      applications.find(
+        item => item.requestNumber === requestNumber
+      );
+
+
+    if (!app || app.status !== "Approved") {
+
+      alert(
+        "Certificate is not available.\n" +
+        "ምስክር ወረቀቱ እስካሁን አልተዘጋጀም።"
+      );
+
+      return;
+
+    }
+
+
+    document
+      .getElementById("certificateNumber")
+      .textContent =
+      "CERT-" + app.requestNumber;
+
+
+    document
+      .getElementById("certificateName")
+      .textContent =
+      app.fullName;
+
+
+    document
+      .getElementById("certificateTypeResult")
+      .textContent =
+      app.certificateType;
+
+
+    document
+      .getElementById("certificateId")
+      .textContent =
+      app.idNumber;
+
+
+    document
+      .getElementById("certificatePhone")
+      .textContent =
+      app.phone;
+
+
+    document
+      .getElementById("certificateDate")
+      .textContent =
+      new Date().toLocaleDateString();
+
+
+    document
+      .getElementById("certificate")
+      .style.display =
+      "block";
+
+
+    document
+      .getElementById("certificate")
+      .scrollIntoView({
+        behavior: "smooth"
+      });
+
+  }
+
+
+  /* LOAD DATA WHEN PAGE OPENS */
+
+  loadApprovalTable();
+
+</script>
+
+
+</body>
+</html>
